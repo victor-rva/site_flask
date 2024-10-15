@@ -1,0 +1,14 @@
+@import url(../css/home.css);
+
+.titulo{
+    backdrop-filter: blur(30px);
+    font-size: 50px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#form_fundo{
+    margin: 2% 50% 5% 5%;
+
+}

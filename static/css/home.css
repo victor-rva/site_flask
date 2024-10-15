@@ -8,6 +8,14 @@ body{
     display: block;
 }
 
+div.flash_alerta{
+    background-color: red;
+    font-size: 50px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
 div#form_fundo{
     backdrop-filter: blur(10px);
     opacity: .9;
