@@ -14,7 +14,7 @@
             {{message[0]}}
         </div>
     {% endif %}
-        <h1 id="titulo">PAINEL DE ADMINISTRADOR</h1>
+        <h1 class="titulo">PAINEL DE ADMINISTRADOR</h1>
 
     <div id="form_fundo">
         <h1>CADASTRAR</h1>
@@ -34,5 +34,26 @@
             </form>
         </div>    
     </div>
+
+    <div id="form_fundo" class="lista_usuarios">
+        <h1>USUARIOS CADASTRADOS</h1>
+        <div id="form_frente" class="lista_usuarios">
+            {% if usuarios %}
+                {% for user in usuarios %}
+                    <ul>
+                        <li>Nome: {{user['nome']}}</li><br>
+                        <li>Senha {{user['senha']}}</li>
+                    </ul>
+                    ------------------------------------------------
+                {% endfor %}
+
+            {% else %}
+            <h1>Não existem usuários cadastrados</h1>
+
+            {% endif %}
+
+        </div>    
+    </div>
+
 </body>
 </html>
