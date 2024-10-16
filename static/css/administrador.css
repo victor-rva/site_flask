@@ -15,7 +15,7 @@ div#form_fundo{
 
 div#form_fundo.lista_usuarios{
     margin: 2% 1% 5% 51%;
-    position: relative;
+    width: 600px;
 }
 
 div#form_frente.lista_usuarios{
@@ -23,5 +23,15 @@ div#form_frente.lista_usuarios{
     font-size: bold;
     font-size: 14px;
     overflow-y: scroll;
-    height: 250px;
+    height: 225px;
+    width: 525px;
+}
+
+#buttonExcluir{
+    font-size: 13px;
+    margin-left: 30px;
+}
+
+div.flash_alerta{
+    background-color: green;
 }
