@@ -35,3 +35,8 @@ div#form_frente.lista_usuarios{
 div.flash_alerta{
     background-color: green;
 }
+
+div#form_fundo.upload{
+    margin-top: 450px;
+    margin-left: 320px;
+}

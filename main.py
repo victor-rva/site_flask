@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, request, flash
+from flask import Flask, render_template, redirect, request, flash, send_from_directory
 import json
 import ast
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'PROJETOFLASK'
@@ -23,6 +24,16 @@ def adm():
     if not logado:
         return redirect('/')
 
+@app.route('/usuarios')
+def usuarios():
+    if logado:
+        arquivo = []
+        for documento in os.listdir('./arquivos'):
+            arquivo.append(documento)
+        return render_template('usuarios.html', arquivos=arquivo)
+    else:
+        return redirect('/')
+
 @app.route('/login', methods=['POST'])
 def login():
     global logado
@@ -40,7 +51,8 @@ def login():
                 logado = True
                 return redirect('/adm')
             if usuario['nome'] == nome and usuario['senha'] == senha:
-                return render_template('usuarios.html')
+                logado = True
+                return redirect('/usuarios')
             
             if cont >= len(usuarios):
                 flash('USUARIO INVALIDO')
@@ -88,6 +100,23 @@ def excluirUsuario():
     flash(f'{nome} EXCLUIDO')
     return redirect('/adm')
 
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    global logado
+    logado = True
+    
+    arquivo = request.files.get('documento')
+    nome_arquivo = arquivo.filename.replace(' ', '-')
+    arquivo.save(os.path.join('./arquivos', nome_arquivo))
+    
+    flash('Arquivo salvo')
+    return redirect('/adm')
+
+@app.route('/download', methods=['POST'])
+def download():
+    nome_arquivo = request.form.get('arquivos_download')
+    return send_from_directory('./arquivos', nome_arquivo, as_attachment=True)
 
 if __name__ in "__main__":
     app.run(debug=True)
