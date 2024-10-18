@@ -42,9 +42,10 @@
                 {% for user in usuarios %}
                 <form action="/excluirUsuario" method="post">
                     <ul>
-                        <input type="hidden" name="usuario_exclusao", value="{{user}}"5>
-                        <li>Nome: {{user['nome']}}</li><br>
-                        <li>Senha {{user['senha']}}</li>
+                        <input type="hidden" name="usuario_exclusao", value="{{user[0]}}"5>
+                        <input type="hidden" name="nome", value="{{user[1]}}">
+                        <li>Nome: {{user[1]}}</li><br>
+                        <li>Senha {{user[2]}}</li>
                     </ul>
                     <button type="submit" id="buttonExcluir">EXCLUIR</button>
                 </form>
